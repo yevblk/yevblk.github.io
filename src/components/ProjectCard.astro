@@ -8,12 +8,12 @@ export interface Props {
 }
 const { title, description, source, demo, stack = [] } = Astro.props;
 ---
-<article class="bg-background rounded-xl p-6 transition transform hover:scale-[1.03] flex flex-col h-full text-left items-start justify-start font-sans">
+<article class="bg-background/80 rounded-xl p-6 shadow-md transition transform hover:scale-[1.03] flex flex-col h-full text-left items-start justify-start font-sans">
   <h3 class="text-xl font-bold mb-2 text-text font-serif">{title}</h3>
   <p class="text-text-muted mb-4 flex-1">{description}</p>
   <div class="flex flex-wrap gap-2 mb-4 font-mono">
     {stack.map(tech => (
-      <span class="flex items-center gap-1 bg-blue-600 text-white px-2 py-0.5 rounded-full text-xs font-semibold shadow-sm">
+      <span class="flex items-center gap-1 bg-background/80 text-white px-2 py-0.5 rounded-full text-xs font-semibold shadow-md">
         {tech === 'HTML' && <i class="fa-brands fa-html5"></i>}
         {tech === 'PWA' && <i class="fa-solid fa-mobile-screen-button"></i>}
         {tech === 'JavaScript' && <i class="fa-brands fa-js"></i>}
@@ -27,12 +27,12 @@ const { title, description, source, demo, stack = [] } = Astro.props;
   </div>
   <div class="flex gap-4 mt-auto">
     {source && source !== "#" && source !== "" && (
-      <a href={source} target="_blank" rel="noopener" class="bg-blue-600 text-white font-semibold px-2 py-1 rounded hover:bg-blue-700 transition-all duration-200 flex items-center gap-1 shadow-sm">
+      <a href={source} target="_blank" rel="noopener" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
         <i class="fa-brands fa-github"></i> Source
       </a>
     )}
     {demo && demo !== "" && (
-      <a href={demo} target="_blank" rel="noopener" class="bg-blue-600 text-white font-semibold px-2 py-1 rounded hover:bg-blue-700 transition-all duration-200 flex items-center gap-1 shadow-sm">
+      <a href={demo} target="_blank" rel="noopener" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
       </a>
     )}

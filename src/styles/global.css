@@ -66,4 +66,29 @@ button {
 .nav-link.active {
   color: var(--color-accent);
   font-weight: bold;
+}
+
+@media (max-width: 640px) {
+  section {
+    padding: 1rem !important;
+    margin-bottom: 2rem !important;
+    border-radius: 0.75rem !important;
+  }
+  h1 {
+    font-size: 1.5rem !important;
+  }
+  h2 {
+    font-size: 1.25rem !important;
+  }
+  h3 {
+    font-size: 1.1rem !important;
+  }
+  button, input, textarea {
+    font-size: 1rem !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  .font-mono, .font-serif, .font-sans {
+    font-size: 1rem !important;
+  }
 } 

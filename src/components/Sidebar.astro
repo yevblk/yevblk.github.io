@@ -14,8 +14,8 @@ import TypedText from "./TypedText.jsx";
     </div>
     <div class="flex flex-col flex-1 w-full text-center">
       <div class="text-xl md:text-2xl font-bold mb-1 text-text font-serif">Eugene Wajt</div>
-      <div class="text-base md:text-lg text-accent font-semibold mb-2 font-serif text-text">
-        <TypedText client:load className="text-text" />
+      <div class="text-base md:text-lg font-semibold mb-2 font-serif text-blue-200 dark:text-blue-100">
+        <TypedText client:load className="text-blue-200 dark:text-blue-100" />
       </div>
       <blockquote class="border-l-4 border-accent pl-3 md:pl-4 italic text-text-muted text-xs md:text-sm mb-4 font-mono">
         "Code is like humor. When you have to explain it, it's bad." — Cory House
@@ -37,6 +37,7 @@ import TypedText from "./TypedText.jsx";
           <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
           <span class="group-hover:text-accent transition-all">PROJECTS</span>
         </a>
+        {/*
         <a
           href="#education"
           class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
@@ -44,6 +45,15 @@ import TypedText from "./TypedText.jsx";
           <i class="fa-solid fa-graduation-cap text-accent"></i>
           <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
           <span class="group-hover:text-accent transition-all">EDUCATION</span>
+        </a>
+        */}
+        <a
+          href="#contact"
+          class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
+        >
+          <i class="fa-solid fa-envelope text-accent"></i>
+          <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
+          <span class="group-hover:text-accent transition-all">CONTACT</span>
         </a>
       </nav>
     </div>
@@ -94,8 +104,8 @@ import TypedText from "./TypedText.jsx";
   </div>
   <div class="flex flex-col flex-1 w-full text-center">
     <div class="text-xl sm:text-2xl font-bold mb-1 text-text font-serif">Eugene Wajt</div>
-    <div class="text-base sm:text-lg text-accent font-semibold mb-2 font-serif">
-      <TypedText client:load />
+    <div class="text-base sm:text-lg font-semibold mb-2 font-serif text-blue-200 dark:text-blue-100">
+      <TypedText client:load className="text-blue-200 dark:text-blue-100" />
     </div>
     <blockquote class="border-l-4 border-accent pl-3 sm:pl-4 italic text-text-muted text-xs sm:text-sm mb-4 font-mono">
       "Code is like humor. When you have to explain it, it's bad." — Cory House
@@ -117,6 +127,7 @@ import TypedText from "./TypedText.jsx";
         <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
         <span class="group-hover:text-accent transition-all">PROJECTS</span>
       </a>
+      {/*
       <a
         href="#education"
         class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
@@ -124,6 +135,15 @@ import TypedText from "./TypedText.jsx";
         <i class="fa-solid fa-graduation-cap text-accent"></i>
         <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
         <span class="group-hover:text-accent transition-all">EDUCATION</span>
+      </a>
+      */}
+      <a
+        href="#contact"
+        class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
+      >
+        <i class="fa-solid fa-envelope text-accent"></i>
+        <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
+        <span class="group-hover:text-accent transition-all">CONTACT</span>
       </a>
     </nav>
   </div>

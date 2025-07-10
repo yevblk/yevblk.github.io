@@ -4,6 +4,7 @@ import '../styles/global.css';
 ---
 <html lang="en">
 <head>
+	<title>Eugene Belikov — Portfolio</title>
 	<meta charset="utf-8" />
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<meta name="viewport" content="width=device-width" />
@@ -28,11 +29,9 @@ import '../styles/global.css';
 	<meta name="twitter:image" content="https://yevblk.github.io/me.jpg" />
 </head>
 <body>
-<div class="flex min-h-screen bg-background font-sans text-text">
-	<aside class="hidden md:block fixed left-0 top-0 h-full w-[280px] z-30">
-		<Sidebar />
-	</aside>
-	<main class="flex-1 ml-0 md:ml-[280px] px-2 sm:px-4 md:px-8 py-6 sm:py-8">
+<div class="flex flex-col md:flex-row min-h-screen bg-background font-sans text-text">
+	<Sidebar />
+	<main class="flex-1 ml-0 md:ml-[280px] px-2 sm:px-4 md:px-8 py-6 sm:py-8 flex flex-col gap-8">
 		<slot />
 	</main>
 </div>
