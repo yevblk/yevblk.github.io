@@ -36,4 +36,5 @@ Thumbs.db
 # Others
 .sass-cache/
 .cache/
+.cursor/
 .astro/
