@@ -1,0 +1,12 @@
+---
+const toggleTheme = () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+};
+---
+<button type="button" class="ml-4 p-2 rounded focus:outline-none" aria-label="Toggle theme" onclick={toggleTheme}>
+  <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 dark:hidden"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" class="w-6 h-6 hidden dark:inline"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="2"/></svg>
+</button> 

@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+  background: linear-gradient(135deg, #1a2233 0%, #232b3a 100%);
+  color: theme('colors.text.DEFAULT');
+  min-height: 100vh;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-sans {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
+}
+
+.font-serif {
+  font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+}
+
+.font-mono {
+  font-family: Menlo, Consolas, Monaco, Adwaita Mono, Liberation Mono, Lucida Console, monospace;
+}
+
+::selection {
+  background: theme('colors.accent.muted');
+  color: theme('colors.background.dark');
+}
+
+a {
+  @apply text-accent hover:underline transition-colors duration-200;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-text;
+  letter-spacing: 0.01em;
+  @apply underline decoration-accent/30 underline-offset-4;
+}
+
+h1 {
+  @apply text-4xl md:text-5xl;
+}
+h2 {
+  @apply text-3xl md:text-4xl;
+}
+h3 {
+  @apply text-2xl;
+}
+
+section {
+  @apply mb-16 bg-background rounded-xl p-6 text-left items-start;
+}
+
+input, textarea {
+  @apply bg-surface text-text px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent transition-all duration-200;
+}
+
+button {
+  @apply bg-accent text-white font-bold py-2 px-6 rounded-full shadow-md hover:bg-accent-muted hover:scale-105 hover:shadow-lg focus:ring-2 focus:ring-accent transition-all duration-200;
+}
+
+.nav-link.active {
+  color: var(--color-accent);
+  font-weight: bold;
+} 

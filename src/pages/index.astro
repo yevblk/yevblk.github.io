@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Education from '../components/Education.astro';
+---
+
+<Layout>
+	<Sidebar />
+	<Hero />
+	<Projects>
+		<ProjectCard 
+			title="Bibliographic Citation Style Converter" 
+			description="An intelligent tool designed to streamline academic workflows by ensuring seamless and accurate citation formatting across multiple international standards. Built for reliability and efficiency, with robust offline capabilities."
+			source="https://github.com/yevblk/citation-style-converter"
+			demo="https://citation-style-converter.onrender.com"
+			stack={["HTML", "CSS", "JavaScript", "PWA"]} 
+		/>
+		<ProjectCard 
+			title="Portfolio Website" 
+			description="A visually engaging and responsive personal website crafted with cutting-edge web technologies."
+			source="https://github.com/yevblk/yevblk.github.io"
+			demo="#" 
+			stack={["Astro", "Tailwind CSS", "JavaScript"]} 
+		/>
+	</Projects>
+	<Education />
+</Layout>
