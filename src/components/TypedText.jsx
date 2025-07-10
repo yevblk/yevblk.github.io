@@ -6,7 +6,7 @@ const DELETING_SPEED = 50; // ms per character
 const DELAY_AFTER_TYPED = 1200; // ms to wait after full text
 const DELAY_AFTER_DELETED = 400; // ms to wait after deletion
 
-export default function TypedText() {
+export default function TypedText({ className = "" }) {
   const [textIndex, setTextIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
@@ -45,7 +45,7 @@ export default function TypedText() {
   }, [displayed, isDeleting, textIndex]);
 
   return (
-    <span style={{ fontFamily: "monospace", whiteSpace: "pre" }}>
+    <span className={className} style={{ fontFamily: "monospace", whiteSpace: "pre" }}>
       {displayed}
       <span style={{ opacity: showCursor ? 1 : 0 }}>|</span>
     </span>

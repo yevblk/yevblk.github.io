@@ -28,7 +28,7 @@ module.exports = {
         },
         text: {
           DEFAULT: '#e3e8ee',
-          muted: '#a0aec0',
+          muted: '#b0b8c8',
           dark: '#cbd5e1',
         },
         white: '#ffffff',
