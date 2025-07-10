@@ -26,16 +26,20 @@ import TypedText from "./TypedText.jsx";
           class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text relative py-1 pl-0 transition-all duration-200"
         >
           <i class="fa-solid fa-user text-accent"></i>
-          <span class="block w-10 h-px bg-accent mr-3 group-hover:bg-accent-muted transition-all"></span>
-          <span class="group-hover:text-accent transition-all">ABOUT</span>
+          <span class="flex flex-row items-center justify-between min-w-[110px]">
+            <span class="group-hover:text-accent transition-all block">ABOUT</span>
+            <span class="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-900 text-blue-200 text-xs font-bold border border-blue-700 select-none">1</span>
+          </span>
         </a>
         <a
           href="#projects"
           class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
         >
           <i class="fa-solid fa-folder-open text-accent"></i>
-          <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
-          <span class="group-hover:text-accent transition-all">PROJECTS</span>
+          <span class="flex flex-row items-center justify-between min-w-[110px]">
+            <span class="group-hover:text-accent transition-all block">PROJECTS</span>
+            <span class="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-900 text-blue-200 text-xs font-bold border border-blue-700 select-none">2</span>
+          </span>
         </a>
         {/*
         <a
@@ -43,7 +47,6 @@ import TypedText from "./TypedText.jsx";
           class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
         >
           <i class="fa-solid fa-graduation-cap text-accent"></i>
-          <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
           <span class="group-hover:text-accent transition-all">EDUCATION</span>
         </a>
         */}
@@ -52,8 +55,10 @@ import TypedText from "./TypedText.jsx";
           class="nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-text-muted relative py-1 pl-0 transition-all duration-200"
         >
           <i class="fa-solid fa-envelope text-accent"></i>
-          <span class="block w-10 h-px bg-text-muted mr-3 group-hover:bg-accent-muted transition-all"></span>
-          <span class="group-hover:text-accent transition-all">CONTACT</span>
+          <span class="flex flex-row items-center justify-between min-w-[110px]">
+            <span class="group-hover:text-accent transition-all block">CONTACT</span>
+            <span class="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-900 text-blue-200 text-xs font-bold border border-blue-700 select-none">3</span>
+          </span>
         </a>
       </nav>
     </div>
@@ -147,7 +152,7 @@ import TypedText from "./TypedText.jsx";
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     // Desktop scroll spy
-    const sections = ['about', 'projects', 'education'].map(id => document.getElementById(id));
+    const sections = ['about', 'projects', 'contact'].map(id => document.getElementById(id));
     const navLinks = document.querySelectorAll('.nav-link');
     function onScroll() {
       let current = '';
@@ -165,5 +170,28 @@ import TypedText from "./TypedText.jsx";
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
+
+    // Tab switching by 1, 2, 3
+    const tabHrefs = ['#about', '#projects', '#contact'];
+    window.addEventListener('keydown', (e) => {
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+      if (e.key === '1' || e.key === '2' || e.key === '3') {
+        const idx = parseInt(e.key, 10) - 1;
+        const link = document.querySelector(`.nav-link[href='${tabHrefs[idx]}']`);
+        if (link) {
+          link.focus();
+          link.click();
+        }
+      }
+    });
   });
 </script>
+
+<style>
+  .nav-link.active span {
+    color: #60a5fa !important; /* Tailwind sky-400 */
+  }
+  .nav-link.active .block.w-10.h-px {
+    background: #60a5fa !important;
+  }
+</style>
