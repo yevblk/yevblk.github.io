@@ -1,16 +1,15 @@
----
----
 <section id="contact" class="bg-background rounded-xl shadow-lg p-8 max-w-3xl mx-auto mb-12 text-center md:text-left font-sans">
   <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-2 text-text underline decoration-accent/30 underline-offset-4 drop-shadow font-serif">
     Get in touch
   </h2>
   <p class="mb-6 text-white/90 font-semibold drop-shadow-sm text-base md:text-lg">I'd love to hear from you! Fill out the form and I'll get back to you soon.</p>
-  <form 
-    action="https://formsubmit.co/973e073785e6010daaf5a5a2b48f6036" 
-    method="POST" 
+  <form id="contact-form"
     class="flex flex-col gap-4 w-full max-w-xl mx-auto p-6 rounded-2xl shadow-2xl border border-accent/10 bg-gradient-to-br from-background via-background/90 to-accent/10 backdrop-blur-sm"
+    autocomplete="off"
+    action="javascript:void(0);"
   >
-    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_blacklist" value="viagra, casino, porn, sex, loan, free money, spam, test, buy now, click here, bitcoin, crypto, adult, nude, escort, dating, pills, drugs, scam, money, offer, win, winner, prize">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
     <label class="flex flex-col gap-1 text-left relative">
       <span class="font-semibold text-text flex items-center gap-2">
         <i class="fa-solid fa-user text-accent"></i>
@@ -51,10 +50,54 @@
       ></textarea>
     </label>
     <button 
+      id="contact-submit"
       type="submit" 
       class="mt-2 px-8 py-3 rounded-lg bg-blue-700 text-white font-bold shadow-lg hover:bg-blue-800 active:bg-blue-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
     >
       Send
     </button>
+    <div id="contact-status" class="mt-2 text-base font-semibold"></div>
   </form>
-</section> 
+  <script type="module" is:inline>
+    const form = document.getElementById('contact-form');
+    const statusDiv = document.getElementById('contact-status');
+    const submitBtn = document.getElementById('contact-submit');
+    let statusTimeout;
+    function clearStatus(delay = 4000) {
+      clearTimeout(statusTimeout);
+      statusTimeout = setTimeout(() => {
+        statusDiv.textContent = '';
+        statusDiv.className = "mt-2 text-base font-semibold";
+      }, delay);
+    }
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (form._honey.value) return statusDiv.textContent = '';
+      statusDiv.textContent = '';
+      statusDiv.className = "mt-2 text-base font-semibold";
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/973e073785e6010daaf5a5a2b48f6036', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        });
+        if (res.ok) {
+          statusDiv.textContent = 'Your message has been sent!';
+          statusDiv.className = "mt-2 text-green-600 font-semibold";
+          form.reset();
+        } else {
+          statusDiv.textContent = 'Something went wrong. Please try again later.';
+          statusDiv.className = "mt-2 text-red-600 font-semibold";
+        }
+      } catch {
+        statusDiv.textContent = 'Something went wrong. Please try again later.';
+        statusDiv.className = "mt-2 text-red-600 font-semibold";
+      }
+      clearStatus();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send';
+    });
+  </script>
+</section>

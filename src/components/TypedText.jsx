@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const texts = ["Web Developer", "Python Developer", "Automation Engineer"];
 const TYPING_SPEED = 100; // ms per character
 const DELETING_SPEED = 50; // ms per character
-const DELAY_AFTER_TYPED = 1200; // ms to wait after full text
+const DELAY_AFTER_TYPED = 400; // ms to wait after full text
 const DELAY_AFTER_DELETED = 400; // ms to wait after deletion
 
 export default function TypedText({ className = "" }) {
