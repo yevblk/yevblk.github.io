@@ -31,6 +31,11 @@ body {
   color: theme('colors.background.dark');
 }
 
+.motion-headline ::selection {
+  background: #3b82f6;
+  color: #fff;
+}
+
 a {
   @apply text-accent hover:underline transition-colors duration-200;
 }
