@@ -6,7 +6,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
-  background: linear-gradient(135deg, #1a2233 0%, #232b3a 100%);
+  background: linear-gradient(135deg, #2d224c 0%, #232b3a 60%, #23243a 100%);
   color: theme('colors.text.DEFAULT');
   min-height: 100vh;
   letter-spacing: 0.01em;
@@ -68,28 +68,45 @@ button {
   font-weight: bold;
 }
 
+.text-cool-gray {
+  color: #E2E8F0 !important;
+}
+
 @media (max-width: 640px) {
   section {
-    padding: 1rem !important;
-    margin-bottom: 2rem !important;
+    padding: 2rem 1rem !important;
+    margin-bottom: 2.5rem !important;
     border-radius: 0.75rem !important;
   }
   h1 {
-    font-size: 1.5rem !important;
+    font-size: 2rem !important;
   }
   h2 {
-    font-size: 1.25rem !important;
+    font-size: 1.5rem !important;
   }
   h3 {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
   }
   button, input, textarea {
-    font-size: 1rem !important;
-    padding: 0.75rem 1rem !important;
-    border-radius: 0.75rem !important;
+    font-size: 1.1rem !important;
+    padding: 1rem 1.25rem !important;
+    border-radius: 0.9rem !important;
   }
   .font-mono, .font-serif, .font-sans {
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
+  }
+  .nav-link {
+    font-size: 1.1rem !important;
+    padding: 0.75rem 0.5rem !important;
+  }
+  .project-card {
+    padding: 1.5rem 1rem !important;
+    margin-bottom: 1.5rem !important;
+    border-radius: 1rem !important;
+  }
+  .projects-grid {
+    gap: 1.5rem !important;
+    grid-template-columns: 1fr !important;
   }
 }
 

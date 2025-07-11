@@ -62,11 +62,11 @@ const navItems = [
         {navItems.map((item, idx) => (
           <a
             href={item.href}
-            class={`nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest ${item.textClass} relative py-1 pl-0 transition-all duration-200`}
+            class={`nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-blue-400 ${item.textClass} relative py-1 pl-0 transition-all duration-200`}
           >
-            <i class={`${item.iconType} ${item.icon} text-accent`}></i>
+            <i class={`${item.iconType} ${item.icon} text-blue-400`}></i>
             <span class="flex flex-row items-center justify-between min-w-[110px]">
-              <span class="group-hover:text-accent transition-all block">{item.label}</span>
+              <span class="group-hover:text-blue-500 transition-all block">{item.label}</span>
               {item.badge && (
                 <span class="ml-2 inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-900 text-blue-200 text-xs font-bold border border-blue-700 select-none">{item.badge}</span>
               )}
