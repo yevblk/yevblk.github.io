@@ -110,57 +110,61 @@ const navItems = [
   </div>
 </aside>
 
-<!-- Mobile Sidebar as Section -->
-<section class="block lg:hidden bg-background rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-4 sm:gap-6 my-6 sm:my-8 min-w-[96px] sm:min-w-[128px] overflow-hidden font-sans">
-  <div class="w-24 sm:w-32 h-24 sm:h-32 aspect-square flex-shrink-0 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center text-4xl sm:text-5xl font-bold text-white mb-2 select-none border-4 border-blue-800 overflow-hidden">
-    <img 
-      src="/me.jpg" 
-      alt="Eugene Belikov" 
-      class="w-full h-full aspect-square object-cover rounded-full select-none"
-      draggable="false"
-    />
-  </div>
-  <div class="flex flex-col flex-1 w-full text-center">
-    <div class="text-xl sm:text-2xl font-bold mb-1 text-text font-serif">Eugene Wajt</div>
-    <div class="text-base sm:text-lg font-semibold mb-2 font-serif text-blue-200 dark:text-blue-100">
-      <TypedText client:load className="text-blue-200 dark:text-blue-100" />
-    </div>
-    <blockquote class="border-l-4 border-accent pl-3 sm:pl-4 italic text-text-muted text-xs sm:text-sm mb-4 font-mono">
-      "Code is like humor. When you have to explain it, it's bad." — Cory House
-    </blockquote>
-  </div>
-  <div class="flex justify-center gap-4 sm:gap-6 mb-6 sm:mb-8">
+<!-- Vertical Mobile Sidebar for landscape phones/tablets -->
+<style>
+@media (min-width: 600px) and (max-width: 1023px) {
+  .vertical-mobile-sidebar {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 64px;
+    background: #1a2233;
+    z-index: 40;
+    border-right: 1px solid #232b3a;
+    box-shadow: 2px 0 12px 0 rgba(36, 37, 38, 0.15);
+    align-items: center;
+    padding-top: 1rem;
+    gap: 1.5rem;
+  }
+  .vertical-mobile-sidebar .nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #b0b8c8;
+    padding: 0.5rem 0;
+    width: 100%;
+    transition: color 0.2s;
+  }
+  .vertical-mobile-sidebar .nav-link.active,
+  .vertical-mobile-sidebar .nav-link:hover {
+    color: #3b82f6;
+    font-weight: bold;
+  }
+  .vertical-mobile-sidebar .nav-link i {
+    font-size: 1.3rem;
+    margin-bottom: 0.2rem;
+  }
+}
+@media (max-width: 1023px) and (min-width: 600px) {
+  #mobile-nav { display: none !important; }
+}
+</style>
+
+<div class="vertical-mobile-sidebar hidden">
+  {navItems.map((item, idx) => (
     <a
-      href="https://github.com/yevblk"
-      target="_blank"
-      rel="noopener"
-      aria-label="GitHub"
-      class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl sm:text-[32px]"
+      href={item.href}
+      class={`nav-link flex flex-col items-center ${item.textClass} ${idx === 0 ? 'active' : ''}`}
     >
-      <i class="fa-brands fa-github"></i>
+      <i class={`${item.iconType} ${item.icon}`}></i>
+      <span class="text-[10px] mt-1">{item.label}</span>
     </a>
-    {/*
-    <a
-      href="https://linkedin.com/"
-      target="_blank"
-      rel="noopener"
-      aria-label="LinkedIn"
-      class="text-text-muted hover:text-accent transition-colors duration-200 text-[32px]"
-    >
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-    */}
-    <a
-      href="https://t.me/jabilyk"
-      target="_blank"
-      rel="noopener"
-      aria-label="Telegram"
-      class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl sm:text-[32px]"
-    >
-      <i class="fa-brands fa-telegram"></i>
-    </a>
-  </div>
-</section>
+  ))}
+</div>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {

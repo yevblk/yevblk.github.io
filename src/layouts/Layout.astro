@@ -1,5 +1,6 @@
 ---
 import Sidebar from '../components/Sidebar.astro';
+import MobileProfile from '../components/MobileProfile.astro';
 import '../styles/global.css';
 ---
 <html lang="en">
@@ -46,8 +47,11 @@ import '../styles/global.css';
         Contact
       </a>
     </nav>
-	<main class="flex-1 ml-0 lg:ml-[280px] px-2 sm:px-4 md:px-8 py-6 sm:py-8 flex flex-col gap-8">
-		<slot />
+	<main class="flex-1 ml-0 lg:ml-[280px] px-2 sm:px-4 md:px-8 py-6 sm:py-8 flex flex-col gap-8 vertical-sidebar-main">
+		<div class="content-wrapper">
+			<MobileProfile />
+			<slot />
+		</div>
 	</main>
 </div>
 <script is:inline>
@@ -82,4 +86,27 @@ import '../styles/global.css';
 		width: 100%;
 		height: 100%;
 	}
+@media (min-width: 600px) and (max-width: 1023px) {
+  .vertical-sidebar-main {
+    margin-left: 64px !important;
+  }
+  .content-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media (max-width: 599px), (min-width: 1024px) {
+  .content-wrapper {
+    max-width: 48rem; /* ~768px, як max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 </style>
