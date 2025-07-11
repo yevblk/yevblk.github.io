@@ -91,4 +91,30 @@ button {
   .font-mono, .font-serif, .font-sans {
     font-size: 1rem !important;
   }
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  section {
+    padding: 1.25rem !important;
+    margin-bottom: 1.5rem !important;
+    border-radius: 1rem !important;
+    max-width: 95vw !important;
+  }
+  h1 {
+    font-size: 2rem !important;
+  }
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  h3 {
+    font-size: 1.2rem !important;
+  }
+  button, input, textarea {
+    font-size: 1.05rem !important;
+    padding: 0.8rem 1.1rem !important;
+    border-radius: 0.8rem !important;
+  }
+  .font-mono, .font-serif, .font-sans {
+    font-size: 1.05rem !important;
+  }
 } 

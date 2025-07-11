@@ -40,9 +40,9 @@ const navItems = [
 ---
 
 <!-- Desktop Sidebar -->
-<aside class="hidden md:block fixed left-0 top-0 h-full w-[220px] md:w-[280px] min-w-[96px] md:min-w-[128px] z-30 overflow-hidden font-sans">
-  <div class="bg-background rounded-2xl p-4 md:p-6 flex flex-col items-center gap-4 md:gap-6 h-full">
-    <div class="w-24 md:w-32 h-24 md:h-32 aspect-square flex-shrink-0 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center text-4xl md:text-5xl font-bold text-white mb-2 select-none border-4 border-blue-800 overflow-hidden">
+<aside class="hidden lg:block fixed left-0 top-0 h-full w-[200px] lg:w-[220px] min-w-[80px] lg:min-w-[96px] z-30 overflow-hidden font-sans">
+  <div class="bg-background rounded-2xl p-4 lg:p-6 flex flex-col items-center gap-3 lg:gap-6 h-full">
+    <div class="w-20 lg:w-32 h-20 lg:h-32 aspect-square flex-shrink-0 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center text-3xl lg:text-5xl font-bold text-white mb-2 select-none border-4 border-blue-800 overflow-hidden">
       <img 
         src="/me.jpg" 
         alt="Eugene Belikov" 
@@ -51,14 +51,14 @@ const navItems = [
       />
     </div>
     <div class="flex flex-col flex-1 w-full text-center">
-      <div class="text-xl md:text-2xl font-bold mb-1 text-text font-serif">Eugene Wajt</div>
-      <div class="text-base md:text-lg font-semibold mb-2 font-serif text-blue-200 dark:text-blue-100">
+      <div class="text-lg lg:text-2xl font-bold mb-1 text-text font-serif">Eugene Wajt</div>
+      <div class="text-base lg:text-lg font-semibold mb-2 font-serif text-blue-200 dark:text-blue-100">
         <TypedText client:load className="text-blue-200 dark:text-blue-100" />
       </div>
-      <blockquote class="border-l-4 border-accent pl-3 md:pl-4 italic text-text-muted text-xs md:text-sm mb-4 font-mono">
+      <blockquote class="border-l-4 border-accent pl-3 lg:pl-4 italic text-text-muted text-xs lg:text-sm mb-4 font-mono">
         "Code is like humor. When you have to explain it, it's bad." — Cory House
       </blockquote>
-      <nav class="flex flex-col gap-3 md:gap-4 w-full max-w-xs items-start mx-auto mb-8 md:mb-10">
+      <nav class="flex flex-col gap-3 lg:gap-4 w-full max-w-xs items-start mx-auto mb-8 lg:mb-10">
         {navItems.map((item, idx) => (
           <a
             href={item.href}
@@ -75,13 +75,13 @@ const navItems = [
         ))}
       </nav>
     </div>
-    <div class="flex justify-center gap-4 md:gap-6 mb-6 md:mb-8">
+    <div class="flex justify-center gap-3 lg:gap-6 mb-6 lg:mb-8">
       <a
         href="https://github.com/yevblk"
         target="_blank"
         rel="noopener"
         aria-label="GitHub"
-        class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl md:text-[32px]"
+        class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl lg:text-[32px]"
       >
         <i class="fa-brands fa-github"></i>
       </a>
@@ -101,7 +101,7 @@ const navItems = [
         target="_blank"
         rel="noopener"
         aria-label="Telegram"
-        class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl md:text-[32px]"
+        class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl lg:text-[32px]"
       >
         <i class="fa-brands fa-telegram"></i>
       </a>
@@ -111,7 +111,7 @@ const navItems = [
 </aside>
 
 <!-- Mobile Sidebar as Section -->
-<section class="block md:hidden bg-background rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-4 sm:gap-6 my-6 sm:my-8 min-w-[96px] sm:min-w-[128px] overflow-hidden font-sans">
+<section class="block lg:hidden bg-background rounded-2xl p-4 sm:p-6 flex flex-col items-center gap-4 sm:gap-6 my-6 sm:my-8 min-w-[96px] sm:min-w-[128px] overflow-hidden font-sans">
   <div class="w-24 sm:w-32 h-24 sm:h-32 aspect-square flex-shrink-0 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center text-4xl sm:text-5xl font-bold text-white mb-2 select-none border-4 border-blue-800 overflow-hidden">
     <img 
       src="/me.jpg" 
