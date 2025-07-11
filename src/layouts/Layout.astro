@@ -75,6 +75,30 @@ import '../styles/global.css';
   window.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   document.addEventListener('DOMContentLoaded', update);
+
+  // Scroll reveal Intersection Observer
+  document.addEventListener('DOMContentLoaded', function () {
+    const revealEls = document.querySelectorAll('.reveal');
+    const options = {
+      threshold: 0.15
+    };
+    const revealOnce = (entry, observer) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Animate headline letters inside this section
+        const letters = entry.target.querySelectorAll('.headline-letter');
+        letters.forEach(l => {
+          l.style.opacity = '1';
+          l.style.transform = 'none';
+        });
+        observer.unobserve(entry.target);
+      }
+    };
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => revealOnce(entry, observer));
+    }, options);
+    revealEls.forEach(el => observer.observe(el));
+  });
 </script>
 </body>
 </html>

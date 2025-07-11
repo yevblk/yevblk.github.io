@@ -1,6 +1,10 @@
-<section id="projects" class="mb-12">
-  <h2 class="text-2xl sm:text-3xl md:text-2xl font-heading font-bold mb-4 text-text underline decoration-accent/30 underline-offset-4 drop-shadow font-serif">Projects</h2>
-  <p class="mb-6 text-white/90 font-semibold drop-shadow-sm text-base md:text-base">Some of my featured work and experiments.</p>
+<section id="projects" class="mb-12 reveal">
+  <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-text underline decoration-accent/30 underline-offset-4 drop-shadow font-serif">
+    {"Projects".split("").map((char, i) => (
+      <span style={`opacity:0;display:inline-block;transform:translateY(16px);transition:opacity 0.5s ${0.2 + i*0.04}s,transform 0.5s ${0.2 + i*0.04}s;`} class="headline-letter">{char === " " ? "\u00A0" : char}</span>
+    ))}
+  </h2>
+  <p class="text-base sm:text-lg font-semibold drop-shadow-sm text-white/90 mb-6">Some of my featured work and experiments.</p>
   <div class="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-6 md:gap-4 font-mono w-full projects-grid">
     <slot />
   </div>

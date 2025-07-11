@@ -6,7 +6,7 @@ This project is a personal website built with [Astro](https://astro.build/) usin
 
 - [Astro](https://astro.build/)
 - [TailwindCSS](https://tailwindcss.com/)
-- React (for TypedText)
+- React (for MotionHeadline)
 - CSS
 
 ## 🚀 Getting Started
