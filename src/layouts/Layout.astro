@@ -99,7 +99,17 @@ import '../styles/global.css';
     padding-right: 0;
   }
 }
-@media (max-width: 599px), (min-width: 1024px) {
+@media (min-width: 1280px) {
+  .content-wrapper {
+    max-width: 1100px;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .content-wrapper {
+    max-width: 900px;
+  }
+}
+@media (max-width: 599px) {
   .content-wrapper {
     max-width: 48rem; /* ~768px, як max-w-3xl */
     margin-left: auto;
