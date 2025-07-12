@@ -27,12 +27,12 @@ const { title, description, source, demo, stack = [] } = Astro.props;
   </div>
   <div class="flex gap-4 mt-auto">
     {source && source !== "#" && source !== "" && (
-      <a href={source} target="_blank" rel="noopener" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
+      <a href={source} target="_blank" rel="noopener" role="button" aria-label="View source code on GitHub" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
         <i class="fa-brands fa-github"></i> Source
       </a>
     )}
     {demo && demo !== "" && (
-      <a href={demo} target="_blank" rel="noopener" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
+      <a href={demo} target="_blank" rel="noopener" role="button" aria-label="View live demo" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
         <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
       </a>
     )}

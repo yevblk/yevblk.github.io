@@ -40,12 +40,12 @@ const navItems = [
 ---
 
 <!-- Desktop Sidebar -->
-<aside class="hidden lg:block fixed left-0 top-0 h-full w-[200px] lg:w-[220px] min-w-[80px] lg:min-w-[96px] z-30 overflow-hidden font-sans">
+<aside class="hidden lg:block fixed left-0 top-0 h-full w-[200px] lg:w-[220px] min-w-[80px] lg:min-w-[96px] z-30 overflow-hidden font-sans" role="complementary" aria-label="Sidebar">
   <div class="bg-background rounded-2xl p-4 lg:p-6 flex flex-col items-center gap-3 lg:gap-6 h-full">
     <div class="w-20 lg:w-32 h-20 lg:h-32 aspect-square flex-shrink-0 mx-auto rounded-full bg-blue-900/30 flex items-center justify-center text-3xl lg:text-5xl font-bold text-white mb-2 select-none border-4 border-blue-800 overflow-hidden">
       <img 
         src="/me.jpg" 
-        alt="Eugene Belikov" 
+        alt="Eugene Belikov portrait" 
         class="w-full h-full aspect-square object-cover rounded-full select-none"
         draggable="false"
       />
@@ -58,13 +58,15 @@ const navItems = [
       <blockquote class="border-l-4 border-accent pl-3 lg:pl-4 italic text-text-muted text-xs lg:text-sm mb-4 font-mono">
         "Code is like humor. When you have to explain it, it's bad." — Cory House
       </blockquote>
-      <nav class="flex flex-col gap-3 lg:gap-4 w-full max-w-xs items-start mx-auto mb-8 lg:mb-10">
+      <nav class="flex flex-col gap-3 lg:gap-4 w-full max-w-xs items-start mx-auto mb-8 lg:mb-10" role="navigation" aria-label="Sidebar navigation">
         {navItems.map((item, idx) => (
           <a
             href={item.href}
             class={`nav-link flex items-center gap-3 group font-semibold text-sm tracking-widest text-blue-400 ${item.textClass} relative py-1 pl-0 transition-all duration-200`}
+            aria-label={item.label.charAt(0) + item.label.slice(1).toLowerCase() + ' section'}
+            aria-current={idx === 0 ? 'page' : undefined}
           >
-            <i class={`${item.iconType} ${item.icon} text-blue-400`}></i>
+            <i class={`${item.iconType} ${item.icon} text-blue-400`} aria-hidden="true"></i>
             <span class="flex flex-row items-center justify-between min-w-[110px]">
               <span class="group-hover:text-blue-500 transition-all block">{item.label}</span>
               {item.badge && (
@@ -83,7 +85,7 @@ const navItems = [
         aria-label="GitHub"
         class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl lg:text-[32px]"
       >
-        <i class="fa-brands fa-github"></i>
+        <i class="fa-brands fa-github" aria-hidden="true"></i>
       </a>
       {/*
       <a
@@ -93,7 +95,7 @@ const navItems = [
         aria-label="LinkedIn"
         class="text-text-muted hover:text-accent transition-colors duration-200 text-[32px]"
       >
-        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
       </a>
       */}
       <a
@@ -103,7 +105,7 @@ const navItems = [
         aria-label="Telegram"
         class="text-text-muted hover:text-accent transition-colors duration-200 text-2xl lg:text-[32px]"
       >
-        <i class="fa-brands fa-telegram"></i>
+        <i class="fa-brands fa-telegram" aria-hidden="true"></i>
       </a>
     </div>
     <slot />
