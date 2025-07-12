@@ -56,4 +56,34 @@ const { title, description, source, demo, stack = [], slot } = Astro.props;
 .project-link {
   @apply bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1;
 }
+
+@media (max-width: 480px) {
+  .fancy-card-style {
+    padding: 1.5rem !important;
+    min-height: 0 !important;
+  }
+  .project-title {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .project-desc {
+    font-size: 1.05rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .project-stack {
+    gap: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .project-link {
+    font-size: 1.05rem !important;
+    padding: 0.6rem 0.7rem !important;
+    min-width: 44%;
+    text-align: center;
+  }
+  .flex.gap-4.mt-auto {
+    gap: 0.5rem !important;
+    justify-content: center !important;
+    flex-wrap: wrap;
+  }
+}
 </style> 
