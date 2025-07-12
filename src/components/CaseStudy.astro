@@ -28,6 +28,18 @@ const {
 ---
 
 <article class="fancy-card-style case-study reveal" slot={slot}>
+  {image && (
+    <div class="project-image-container mb-6" id={`image-container-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+      <img 
+        src={image} 
+        alt={`Screenshot of ${title}`}
+        class="project-image w-full h-64 object-cover rounded-lg shadow-lg"
+        loading="lazy"
+        onload="this.parentElement.classList.add('has-image')"
+        onerror="this.parentElement.style.display='none'"
+      />
+    </div>
+  )}
   <div class="w-full mb-6">
     <h3 class="project-title">{title}</h3>
     <p class="project-desc">{description}</p>
@@ -163,5 +175,14 @@ const {
 }
 .project-link span {
   z-index: 1;
+}
+
+/* Hide image container by default if image doesn't exist */
+.project-image-container {
+  display: none;
+}
+
+.project-image-container.has-image {
+  display: block;
 }
 </style> 

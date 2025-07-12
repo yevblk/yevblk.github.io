@@ -5,11 +5,24 @@ export interface Props {
   source?: string;
   demo?: string;
   stack?: string[];
+  image?: string;
   slot?: string;
 }
-const { title, description, source, demo, stack = [], slot } = Astro.props;
+const { title, description, source, demo, stack = [], image, slot } = Astro.props;
 ---
 <article class="fancy-card-style project-card reveal" slot={slot}>
+  {image && (
+    <div class="project-image-container mb-4" id={`image-container-${title.replace(/\s+/g, '-').toLowerCase()}`}>
+      <img 
+        src={image} 
+        alt={`Screenshot of ${title}`}
+        class="project-image w-full h-48 object-cover rounded-lg shadow-lg"
+        loading="lazy"
+        onload="this.parentElement.classList.add('has-image')"
+        onerror="this.parentElement.style.display='none'"
+      />
+    </div>
+  )}
   <h3 class="project-title">{title}</h3>
   <p class="project-desc">{description}</p>
   <div class="project-stack">
@@ -89,6 +102,15 @@ const { title, description, source, demo, stack = [], slot } = Astro.props;
 }
 .project-link span {
   z-index: 1;
+}
+
+/* Hide image container by default if image doesn't exist */
+.project-image-container {
+  display: none;
+}
+
+.project-image-container.has-image {
+  display: block;
 }
 
 @media (max-width: 480px) {
