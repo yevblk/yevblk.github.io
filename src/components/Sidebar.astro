@@ -115,7 +115,7 @@ const navItems = [
         href="/cv.pdf"
         download="Eugene_Belikov_CV.pdf"
         aria-label="Download CV"
-        class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 text-sm"
+        class="modern-cv-btn inline-flex items-center gap-2 px-4 py-2 font-semibold transition-all duration-200 text-sm"
       >
         <i class="fa-solid fa-download" aria-hidden="true"></i>
         <span>Download CV</span>
@@ -166,6 +166,44 @@ const navItems = [
 }
 @media (max-width: 1023px) and (min-width: 600px) {
   #mobile-nav { display: none !important; }
+}
+.modern-cv-btn {
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  box-shadow: 0 4px 24px 0 rgba(37,99,235,0.15);
+  color: #fff;
+  border: 1.5px solid rgba(37,99,235,0.25);
+  backdrop-filter: blur(2px);
+  border-radius: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+.modern-cv-btn:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #60a5fa33 0%, #1e40af22 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+.modern-cv-btn:hover:before,
+.modern-cv-btn:focus-visible:before {
+  opacity: 1;
+}
+.modern-cv-btn:hover,
+.modern-cv-btn:focus-visible {
+  transform: scale(1.045);
+  box-shadow: 0 6px 32px 0 rgba(37,99,235,0.22);
+  border-color: #60a5fa;
+  outline: none;
+}
+.modern-cv-btn i {
+  font-size: 1.1em;
+  z-index: 1;
+}
+.modern-cv-btn span {
+  z-index: 1;
 }
 </style>
 
