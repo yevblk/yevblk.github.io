@@ -3,28 +3,70 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Projects from '../components/Projects.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import CaseStudy from '../components/CaseStudy.astro';
 import Education from '../components/Education.astro';
 import GetInTouch from '../components/GetInTouch.astro';
+// import CVDownload from '../components/CVDownload.astro';
 ---
 
 <Layout>
 	<Hero />
+	{/* <CVDownload /> */}
 	<Projects>
 		<ProjectCard 
+			slot="overview"
 			title="Bibliographic Citation Style Converter" 
-			description="An intelligent tool designed to streamline academic workflows by ensuring seamless and accurate citation formatting across multiple international standards. Built for reliability and efficiency, with robust offline capabilities."
+			description="An intelligent tool designed to streamline academic workflows by ensuring seamless and accurate citation formatting between APA, IEEE, and DSTU 8302:2015 standards. Built for reliability and efficiency, with robust offline capabilities."
 			source="https://github.com/yevblk/citation-style-converter"
 			demo="https://citation-style-converter.onrender.com"
 			stack={["HTML", "CSS", "JavaScript", "PWA"]} 
 		/>
 		<ProjectCard 
+			slot="overview"
 			title="Portfolio Website" 
 			description="A visually engaging and responsive personal website crafted with cutting-edge web technologies."
 			source="https://github.com/yevblk/yevblk.github.io"
 			demo="#" 
 			stack={["Astro", "Tailwind CSS", "JavaScript"]} 
 		/>
+		
+		<CaseStudy 
+			slot="detailed"
+			title="Bibliographic Citation Style Converter"
+			description="A web-based tool for converting bibliographic citations between APA, IEEE, and DSTU 8302:2015 standards."
+			task="Develop a tool that allows users to convert bibliographic citations between APA, IEEE, and DSTU 8302:2015 standards with a user-friendly interface. The tool should work offline and handle different citation formats including books, articles, and websites."
+			approach="Implemented a progressive web application (PWA) with a modular architecture. Built a citation parsing engine to extract bibliographic elements from various input formats and a conversion engine to map citation elements between APA, IEEE, and DSTU 8302:2015. Designed an intuitive UI with real-time preview and validation."
+			technologies={["HTML", "CSS", "JavaScript", "PWA", "Local Storage", "Service Workers"]}
+			result="Created a citation converter that supports APA, IEEE, and DSTU 8302:2015 standards and works offline. The tool is available as a PWA and can process various citation types."
+			roles={[
+				"Full-stack developer - designed and implemented the application architecture",
+				"UI/UX designer - created the user interface and responsive design",
+				"Data architect - developed citation parsing and conversion logic",
+				"DevOps - handled deployment and hosting"
+			]}
+			source="https://github.com/yevblk/citation-style-converter"
+			demo="https://citation-style-converter.onrender.com"
+		/>
+		
+		<CaseStudy 
+			slot="detailed"
+			title="Portfolio Website"
+			description="A personal portfolio website for showcasing professional experience, projects, and skills."
+			task="Design and develop a personal portfolio website to present professional experience, projects, and technical skills. The site should be responsive, accessible, and visually appealing."
+			approach="Built using the Astro framework for static site generation. Used Tailwind CSS for responsive design and consistent styling. Added animations and transitions with CSS and JavaScript. Ensured accessibility with proper ARIA labels and semantic HTML."
+			technologies={["Astro", "Tailwind CSS", "JavaScript", "CSS Animations", "Font Awesome Icons"]}
+			result="Developed a responsive portfolio website with modern design and smooth animations. The site is accessible and optimized for different devices."
+			roles={[
+				"Frontend developer - built the website using modern web technologies",
+				"UI/UX designer - designed the layout and user experience",
+				"Performance optimizer - applied best practices for fast loading",
+				"Accessibility specialist - ensured accessibility and screen reader support"
+			]}
+			source="https://github.com/yevblk/yevblk.github.io"
+			demo="#"
+		/>
 	</Projects>
+	
 	{/* <Education /> */}
 	<GetInTouch />
 </Layout>

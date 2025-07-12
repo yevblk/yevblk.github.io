@@ -1,13 +1,48 @@
+---
+// Add client-side script for modern horizontal pill toggle with animated height and card container
+---
+
 <section id="projects" class="mb-12 reveal" role="region" aria-label="Projects section">
-  <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-text underline decoration-accent/30 underline-offset-4 drop-shadow font-serif" aria-label="Projects">
-    <span class="sr-only" aria-hidden="true">Projects</span>
-    {"Projects".split("").map((char, i) => (
-      <span style={`opacity:0;display:inline-block;transform:translateY(16px);transition:opacity 0.5s ${0.2 + i*0.04}s,transform 0.5s ${0.2 + i*0.04}s;`} class="headline-letter">{char === " " ? "\u00A0" : char}</span>
-    ))}
-  </h2>
-  <p class="text-base sm:text-lg font-semibold drop-shadow-sm text-white/90 mb-6">Some of my featured work and experiments.</p>
-  <div class="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-6 md:gap-4 font-mono w-full projects-grid">
-    <slot />
+  <div class="bg-background/80 rounded-2xl shadow-xl p-8 md:p-12 max-w-4xl mx-auto flex flex-col items-center">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-text underline decoration-accent/30 underline-offset-4 drop-shadow font-serif" aria-label="Projects">
+      <span class="sr-only" aria-hidden="true">Projects</span>
+      {"Projects".split("").map((char, i) => (
+        <span style={`opacity:0;display:inline-block;transform:translateY(16px);transition:opacity 0.5s ${0.2 + i*0.04}s,transform 0.5s ${0.2 + i*0.04}s;`} class="headline-letter">{char === " " ? "\u00A0" : char}</span>
+      ))}
+    </h2>
+    <p class="text-base sm:text-lg font-semibold drop-shadow-sm text-white/90 mb-6">Some of my featured work and experiments.</p>
+    
+    <!-- Modern Horizontal Pill Toggle -->
+    <div class="flex items-center justify-center mb-8 w-full">
+      <div class="flex items-center gap-4">
+        <span class="text-sm font-semibold text-white transition-colors duration-300" id="overview-label">Overview</span>
+        <label class="relative inline-flex items-center cursor-pointer select-none" style="height: 40px; width: 64px;">
+          <input type="checkbox" id="projects-toggle-switch" class="sr-only peer" aria-labelledby="overview-label detailed-label" />
+          <div class="absolute left-1 top-1 w-8 h-8 bg-accent rounded-full shadow-lg transition-all duration-400 ease-out peer-checked:translate-x-6 flex items-center justify-center text-white text-lg">
+            <i id="toggle-icon" class="fa-solid fa-th-large transition-all duration-300"></i>
+          </div>
+        </label>
+        <span class="text-sm font-semibold text-text-muted transition-colors duration-300" id="detailed-label">Detailed</span>
+      </div>
+    </div>
+
+    <!-- Animated Content Container -->
+    <div id="projects-content-outer" class="relative w-full">
+      <div id="projects-content-inner" class="relative w-full">
+        <!-- Overview View -->
+        <div id="overview-view" class="projects-view" aria-hidden="false">
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-6 md:gap-4 font-mono w-full projects-grid">
+            <slot name="overview" />
+          </div>
+        </div>
+        <!-- Detailed View -->
+        <div id="detailed-view" class="projects-view" aria-hidden="true">
+          <div class="grid grid-cols-1 gap-6 sm:gap-8 font-mono w-full case-studies-grid">
+            <slot name="detailed" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -25,4 +60,141 @@
   user-select: text;
   color: transparent;
 }
+
+#toggle-bg {
+  left: 4px;
+  width: calc(50% - 8px);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+#toggle-bg.detailed {
+  left: calc(50% + 4px);
+}
+
+button {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  min-width: 0;
+}
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
+button:hover i {
+  transform: scale(1.1);
+}
+
+.projects-view {
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+              transform 0.5s cubic-bezier(0.4,0,0.2,1);
+  will-change: opacity, transform;
+}
+.projects-view[aria-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(24px) scale(0.98);
+  z-index: 1;
+  display: none;
+}
+.projects-view[aria-hidden="false"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  z-index: 2;
+  display: block;
+}
+
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Toggle switch styles */
+label[for="projects-toggle-switch"] {
+  user-select: none;
+}
+#projects-toggle-switch:focus + div {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+#projects-toggle-switch:focus-visible + div {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleSwitch = document.getElementById('projects-toggle-switch');
+    const toggleIcon = document.getElementById('toggle-icon');
+    const overviewLabel = document.getElementById('overview-label');
+    const detailedLabel = document.getElementById('detailed-label');
+    const overviewView = document.getElementById('overview-view');
+    const detailedView = document.getElementById('detailed-view');
+    let currentView = 'overview';
+    let isAnimating = false;
+
+    function setActiveView(view) {
+      toggleSwitch.checked = (view === 'detailed');
+      if (view === 'overview') {
+        overviewView.setAttribute('aria-hidden', 'false');
+        detailedView.setAttribute('aria-hidden', 'true');
+        toggleIcon.className = 'fa-solid fa-th-large transition-all duration-300';
+        overviewLabel.classList.add('text-white');
+        overviewLabel.classList.remove('text-text-muted');
+        detailedLabel.classList.add('text-text-muted');
+        detailedLabel.classList.remove('text-white');
+      } else {
+        overviewView.setAttribute('aria-hidden', 'true');
+        detailedView.setAttribute('aria-hidden', 'false');
+        toggleIcon.className = 'fa-solid fa-file-lines transition-all duration-300';
+        overviewLabel.classList.remove('text-white');
+        overviewLabel.classList.add('text-text-muted');
+        detailedLabel.classList.remove('text-text-muted');
+        detailedLabel.classList.add('text-white');
+      }
+    }
+
+    function switchView(view) {
+      if (isAnimating || currentView === view) return;
+      isAnimating = true;
+      currentView = view;
+      setActiveView(view);
+      setTimeout(() => { isAnimating = false; }, 500);
+    }
+
+    toggleSwitch.addEventListener('change', function() {
+      switchView(this.checked ? 'detailed' : 'overview');
+    });
+
+    // Keyboard navigation (left/right arrows)
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft' && currentView === 'detailed') {
+        toggleSwitch.checked = false;
+        switchView('overview');
+      } else if (e.key === 'ArrowRight' && currentView === 'overview') {
+        toggleSwitch.checked = true;
+        switchView('detailed');
+      }
+    });
+
+    // URL hash support
+    function handleHashChange() {
+      const hash = window.location.hash;
+      if (hash === '#detailed') {
+        switchView('detailed');
+      } else if (hash === '#overview') {
+        switchView('overview');
+      } else {
+        setActiveView(currentView);
+      }
+    }
+    window.addEventListener('hashchange', handleHashChange);
+    handleHashChange();
+
+    // Initial setup
+    setActiveView(currentView);
+  });
+</script>

@@ -5,13 +5,14 @@ export interface Props {
   source?: string;
   demo?: string;
   stack?: string[];
+  slot?: string;
 }
-const { title, description, source, demo, stack = [] } = Astro.props;
+const { title, description, source, demo, stack = [], slot } = Astro.props;
 ---
-<article class="bg-background/80 rounded-xl p-6 shadow-md transition transform hover:scale-[1.03] flex flex-col h-full text-left items-start justify-start font-sans project-card reveal">
-  <h3 class="text-xl font-bold mb-2 text-text font-serif">{title}</h3>
-  <p class="text-text-muted mb-4 flex-1">{description}</p>
-  <div class="flex flex-wrap gap-2 mb-4 font-mono">
+<article class="fancy-card-style project-card reveal" slot={slot}>
+  <h3 class="project-title">{title}</h3>
+  <p class="project-desc">{description}</p>
+  <div class="project-stack">
     {stack.map(tech => (
       <span class="flex items-center gap-1 bg-background/80 text-cool-gray px-2 py-0.5 rounded-full text-xs font-semibold shadow-md">
         {tech === 'HTML' && <i class="fa-brands fa-html5"></i>}
@@ -27,14 +28,32 @@ const { title, description, source, demo, stack = [] } = Astro.props;
   </div>
   <div class="flex gap-4 mt-auto">
     {source && source !== "#" && source !== "" && (
-      <a href={source} target="_blank" rel="noopener" role="button" aria-label="View source code on GitHub" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
+      <a href={source} target="_blank" rel="noopener" role="button" aria-label="View source code on GitHub" class="project-link">
         <i class="fa-brands fa-github"></i> Source
       </a>
     )}
     {demo && demo !== "" && (
-      <a href={demo} target="_blank" rel="noopener" role="button" aria-label="View live demo" class="bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1">
-        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+      <a href={demo} target="_blank" rel="noopener" role="button" aria-label="View live demo" class="project-link">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
       </a>
     )}
   </div>
-</article> 
+</article>
+
+<style>
+.fancy-card-style {
+  @apply w-full max-w-[700px] mx-auto bg-gradient-to-br from-background via-background/90 to-accent/10 backdrop-blur-sm border border-accent/10 shadow-2xl rounded-2xl p-6 md:p-8 flex flex-col min-w-0 min-h-[220px] font-sans;
+}
+.project-title {
+  @apply text-2xl font-bold mb-3 text-text font-serif;
+}
+.project-desc {
+  @apply text-base text-text-muted mb-4;
+}
+.project-stack {
+  @apply flex flex-wrap gap-2 mb-4 font-mono;
+}
+.project-link {
+  @apply bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1;
+}
+</style> 

@@ -1,0 +1,133 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  task: string;
+  approach: string;
+  technologies: string[];
+  result: string;
+  roles: string[];
+  source?: string;
+  demo?: string;
+  image?: string;
+  slot?: string;
+}
+const { 
+  title, 
+  description, 
+  task, 
+  approach, 
+  technologies, 
+  result, 
+  roles, 
+  source, 
+  demo, 
+  image,
+  slot
+} = Astro.props;
+---
+
+<article class="fancy-card-style case-study reveal" slot={slot}>
+  <div class="w-full mb-6">
+    <h3 class="project-title">{title}</h3>
+    <p class="project-desc">{description}</p>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+    <!-- Left Column: Task & Approach -->
+    <div class="space-y-6">
+      <div class="bg-background/60 rounded-lg p-4">
+        <h4 class="text-lg font-bold mb-3 text-text flex items-center gap-2">
+          <i class="fa-solid fa-bullseye text-accent"></i>
+          Task
+        </h4>
+        <p class="text-text-muted text-sm leading-relaxed">{task}</p>
+      </div>
+      <div class="bg-background/60 rounded-lg p-4">
+        <h4 class="text-lg font-bold mb-3 text-text flex items-center gap-2">
+          <i class="fa-solid fa-route text-accent"></i>
+          Approach
+        </h4>
+        <p class="text-text-muted text-sm leading-relaxed">{approach}</p>
+      </div>
+    </div>
+    <!-- Right Column: Technologies & Result -->
+    <div class="space-y-6">
+      <div class="bg-background/60 rounded-lg p-4">
+        <h4 class="text-lg font-bold mb-3 text-text flex items-center gap-2">
+          <i class="fa-solid fa-microchip text-accent"></i>
+          Technologies
+        </h4>
+        <div class="project-stack">
+          {technologies.map(tech => (
+            <span class="flex items-center gap-1 bg-background/80 text-cool-gray px-2 py-1 rounded-full text-xs font-semibold shadow-md">
+              {tech === 'HTML' && <i class="fa-brands fa-html5"></i>}
+              {tech === 'PWA' && <i class="fa-solid fa-mobile-screen-button"></i>}
+              {tech === 'JavaScript' && <i class="fa-brands fa-js"></i>}
+              {tech === 'CSS' && <i class="fa-brands fa-css3-alt"></i>}
+              {tech === 'React' && <i class="fa-brands fa-react"></i>}
+              {tech === 'Astro' && <i class="fa-solid fa-star"></i>}
+              {tech === 'Tailwind CSS' && <i class="fa-solid fa-wind"></i>}
+              {tech === 'Node.js' && <i class="fa-brands fa-node-js"></i>}
+              {tech === 'TypeScript' && <i class="fa-brands fa-js"></i>}
+              {tech === 'Local Storage' && <i class="fa-solid fa-database"></i>}
+              {tech === 'Service Workers' && <i class="fa-solid fa-gears"></i>}
+              {tech === 'CSS Animations' && <i class="fa-solid fa-film"></i>}
+              {tech === 'Font Awesome Icons' && <i class="fa-solid fa-icons"></i>}
+              <span>{tech}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="bg-background/60 rounded-lg p-4">
+        <h4 class="text-lg font-bold mb-3 text-text flex items-center gap-2">
+          <i class="fa-solid fa-chart-line text-accent"></i>
+          Result
+        </h4>
+        <p class="text-text-muted text-sm leading-relaxed">{result}</p>
+      </div>
+    </div>
+  </div>
+  <!-- Roles & Contributions -->
+  <div class="w-full mt-6 bg-background/60 rounded-lg p-4">
+    <h4 class="text-lg font-bold mb-3 text-text flex items-center gap-2">
+      <i class="fa-solid fa-user-gear text-accent"></i>
+      My Roles & Contributions
+    </h4>
+    <ul class="list-disc list-inside text-text-muted text-sm space-y-1">
+      {roles.map(role => (
+        <li>{role}</li>
+      ))}
+    </ul>
+  </div>
+  <!-- Action Buttons -->
+  <div class="flex gap-4 mt-6 w-full">
+    {source && source !== "#" && source !== "" && (
+      <a href={source} target="_blank" rel="noopener" role="button" aria-label="View source code on GitHub" class="project-link">
+        <i class="fa-brands fa-github"></i> Source
+      </a>
+    )}
+    {demo && demo !== "" && demo !== "#" && (
+      <a href={demo} target="_blank" rel="noopener" role="button" aria-label="View live demo" class="project-link">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+.fancy-card-style {
+  @apply w-full max-w-[700px] mx-auto bg-gradient-to-br from-background via-background/90 to-accent/10 backdrop-blur-sm border border-accent/10 shadow-2xl rounded-2xl p-6 md:p-8 flex flex-col min-w-0 min-h-[220px] font-sans;
+}
+.project-title {
+  @apply text-2xl font-bold mb-3 text-text font-serif;
+}
+.project-desc {
+  @apply text-base text-text-muted mb-4;
+}
+.project-stack {
+  @apply flex flex-wrap gap-2 mb-4 font-mono;
+}
+.project-link {
+  @apply bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1;
+}
+</style> 

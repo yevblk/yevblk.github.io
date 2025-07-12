@@ -54,52 +54,183 @@
     <button 
       id="contact-submit"
       type="submit" 
-      class="mt-2 px-8 py-3 rounded-lg bg-blue-700 text-white font-bold shadow-lg hover:bg-blue-800 active:bg-blue-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
+      class="stateful-button mt-2 px-8 py-3 rounded-lg bg-blue-700 text-white font-bold shadow-lg hover:bg-blue-800 active:bg-blue-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background overflow-hidden relative"
+      data-state="idle"
     >
-      Send
+      <span class="button-content idle-content flex items-center justify-center">
+        <i class="fa-solid fa-paper-plane mr-2"></i>
+        Send
+      </span>
+      <span class="button-content loading-content flex items-center justify-center opacity-0 pointer-events-none">
+        <i class="fa-solid fa-spinner fa-spin mr-2"></i>
+        Sending...
+      </span>
+      <span class="button-content success-content flex items-center justify-center opacity-0 pointer-events-none">
+        <i class="fa-solid fa-circle-check mr-2"></i>
+        Sent!
+      </span>
+      <span class="button-content error-content flex items-center justify-center opacity-0 pointer-events-none">
+        <i class="fa-solid fa-circle-xmark mr-2"></i>
+        Error
+      </span>
     </button>
-    <div id="contact-status" class="mt-2 text-base font-semibold"></div>
   </form>
+  
+  <style>
+    .stateful-button {
+      position: relative;
+      min-height: 48px;
+    }
+    
+    .button-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .stateful-button[data-state="idle"] .idle-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stateful-button[data-state="loading"] .loading-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stateful-button[data-state="success"] {
+      background-color: #059669;
+      border-color: #059669;
+    }
+    
+    .stateful-button[data-state="success"] .success-content {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .stateful-button[data-state="error"] {
+      background-color: #dc2626;
+      border-color: #dc2626;
+    }
+    
+    .stateful-button[data-state="error"] .error-content {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    /* Exit animations */
+    .stateful-button[data-state="loading"] .idle-content,
+    .stateful-button[data-state="success"] .loading-content,
+    .stateful-button[data-state="error"] .loading-content {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    
+    .stateful-button[data-state="success"] .idle-content,
+    .stateful-button[data-state="error"] .idle-content {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+    
+    /* Initial state for success/error content */
+    .success-content,
+    .error-content {
+      transform: translateY(15px) scale(0.8);
+    }
+    
+    /* Disabled state */
+    .stateful-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    
+    /* Hover effects only for idle state */
+    .stateful-button[data-state="idle"]:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* Success hover */
+    .stateful-button[data-state="success"]:hover {
+      background-color: #047857;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
+    }
+    
+    /* Error hover */
+    .stateful-button[data-state="error"]:hover {
+      background-color: #b91c1c;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+    }
+  </style>
+  
   <script type="module" is:inline>
     const form = document.getElementById('contact-form');
-    const statusDiv = document.getElementById('contact-status');
     const submitBtn = document.getElementById('contact-submit');
-    let statusTimeout;
-    function clearStatus(delay = 4000) {
-      clearTimeout(statusTimeout);
-      statusTimeout = setTimeout(() => {
-        statusDiv.textContent = '';
-        statusDiv.className = "mt-2 text-base font-semibold";
-      }, delay);
+    let resetTimeout;
+    
+    function setButtonState(state) {
+      submitBtn.setAttribute('data-state', state);
     }
+    
+    function resetButton() {
+      setButtonState('idle');
+      submitBtn.disabled = false;
+    }
+    
     form.addEventListener('submit', async e => {
       e.preventDefault();
-      if (form._honey.value) return statusDiv.textContent = '';
-      statusDiv.textContent = '';
-      statusDiv.className = "mt-2 text-base font-semibold";
+      if (form._honey.value) return;
+      
+      // Set loading state
+      setButtonState('loading');
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
+      
       try {
         const res = await fetch('https://formsubmit.co/ajax/973e073785e6010daaf5a5a2b48f6036', {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
           body: new FormData(form)
         });
+        
         if (res.ok) {
-          statusDiv.textContent = 'Your message has been sent!';
-          statusDiv.className = "mt-2 text-green-600 font-semibold";
+          // Success state
+          setButtonState('success');
           form.reset();
+          
+          // Reset to idle after 2 seconds
+          clearTimeout(resetTimeout);
+          resetTimeout = setTimeout(() => {
+            resetButton();
+          }, 2000);
         } else {
-          statusDiv.textContent = 'Something went wrong. Please try again later.';
-          statusDiv.className = "mt-2 text-red-600 font-semibold";
+          // Error state
+          setButtonState('error');
+          
+          // Reset to idle after 3 seconds
+          clearTimeout(resetTimeout);
+          resetTimeout = setTimeout(() => {
+            resetButton();
+          }, 3000);
         }
       } catch {
-        statusDiv.textContent = 'Something went wrong. Please try again later.';
-        statusDiv.className = "mt-2 text-red-600 font-semibold";
+        // Error state
+        setButtonState('error');
+        
+        // Reset to idle after 3 seconds
+        clearTimeout(resetTimeout);
+        resetTimeout = setTimeout(() => {
+          resetButton();
+        }, 3000);
       }
-      clearStatus();
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send';
     });
   </script>
 </section>
