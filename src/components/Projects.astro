@@ -173,6 +173,7 @@ label[for="projects-toggle-switch"] {
     const detailedLabel = document.getElementById('detailed-label');
     const overviewView = document.getElementById('overview-view');
     const detailedView = document.getElementById('detailed-view');
+    const projectsContent = document.getElementById('projects-content-outer');
     let currentView = 'overview';
     let isAnimating = false;
 
@@ -218,6 +219,33 @@ label[for="projects-toggle-switch"] {
         toggleSwitch.checked = true;
         switchView('detailed');
       }
+    });
+
+    // Touch swipe navigation
+    let touchStartX = null;
+    let touchEndX = null;
+    projectsContent.addEventListener('touchstart', function(e) {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+      }
+    });
+    projectsContent.addEventListener('touchend', function(e) {
+      if (touchStartX === null) return;
+      touchEndX = e.changedTouches[0].clientX;
+      const dx = touchEndX - touchStartX;
+      if (Math.abs(dx) > 50) {
+        if (dx < 0 && currentView === 'overview') {
+          // Swipe left: overview -> detailed
+          toggleSwitch.checked = true;
+          switchView('detailed');
+        } else if (dx > 0 && currentView === 'detailed') {
+          // Swipe right: detailed -> overview
+          toggleSwitch.checked = false;
+          switchView('overview');
+        }
+      }
+      touchStartX = null;
+      touchEndX = null;
     });
 
     // URL hash support
