@@ -29,12 +29,12 @@ const { title, description, source, demo, stack = [], slot } = Astro.props;
   <div class="flex gap-4 mt-auto">
     {source && source !== "#" && source !== "" && (
       <a href={source} target="_blank" rel="noopener" role="button" aria-label="View source code on GitHub" class="project-link">
-        <i class="fa-brands fa-github"></i> Source
+        <i class="fa-brands fa-github"></i> <span>Source</span>
       </a>
     )}
     {demo && demo !== "" && (
       <a href={demo} target="_blank" rel="noopener" role="button" aria-label="View live demo" class="project-link">
-        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>Live Demo</span>
       </a>
     )}
   </div>
@@ -54,7 +54,41 @@ const { title, description, source, demo, stack = [], slot } = Astro.props;
   @apply flex flex-wrap gap-2 mb-4 font-mono;
 }
 .project-link {
-  @apply bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow hover:bg-blue-800 transition-colors duration-200 flex items-center gap-1;
+  @apply flex items-center gap-2 justify-center font-bold px-5 py-2 rounded-xl transition-all duration-200;
+  background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
+  box-shadow: 0 4px 24px 0 rgba(37,99,235,0.15);
+  color: #fff;
+  border: 1.5px solid rgba(37,99,235,0.25);
+  backdrop-filter: blur(2px);
+  position: relative;
+  overflow: hidden;
+}
+.project-link:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #60a5fa33 0%, #1e40af22 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+.project-link:hover:before,
+.project-link:focus-visible:before {
+  opacity: 1;
+}
+.project-link:hover,
+.project-link:focus-visible {
+  transform: scale(1.045);
+  box-shadow: 0 6px 32px 0 rgba(37,99,235,0.22);
+  border-color: #60a5fa;
+  outline: none;
+}
+.project-link i {
+  font-size: 1.1em;
+  z-index: 1;
+}
+.project-link span {
+  z-index: 1;
 }
 
 @media (max-width: 480px) {
