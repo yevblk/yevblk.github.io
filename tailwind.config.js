@@ -12,15 +12,19 @@ module.exports = {
           light: '#1a2233',
           dark: '#151a23',
           DEFAULT: '#1a2233',
+          white: '#ffffff',
         },
         surface: {
           DEFAULT: '#1a2233',
           dark: '#1a2233',
+          white: '#ffffff',
         },
         card: '#1a2233',
+        cardWhite: '#ffffff',
         border: {
           DEFAULT: '#2d3545',
           subtle: '#232b3a',
+          white: '#e5e7eb',
         },
         accent: {
           DEFAULT: '#3b82f6',
@@ -30,6 +34,7 @@ module.exports = {
           DEFAULT: '#e3e8ee',
           muted: '#b0b8c8',
           dark: '#cbd5e1',
+          white: '#232b3a',
         },
         white: '#ffffff',
         black: '#000000',

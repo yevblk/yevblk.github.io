@@ -7,7 +7,8 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   site: 'https://yevblk.github.io',
   output: "static",
-  integrations: [react(), tailwind()],
+  integrations: [react(), tailwind(), /* whiteTheme() */
+  ],
   devToolbar: {
     enabled: false,
   },
