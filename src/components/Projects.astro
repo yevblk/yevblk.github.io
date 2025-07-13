@@ -12,17 +12,45 @@
     </h2>
     <p class="text-base sm:text-lg font-semibold drop-shadow-sm text-white/90 mb-6">Some of my featured work and experiments.</p>
     
-    <!-- Modern Horizontal Pill Toggle -->
+    <!-- Modern Horizontal Pill Toggle (Improved) -->
     <div class="flex items-center justify-center mb-8 w-full">
       <div class="flex items-center gap-4">
-        <span class="text-sm font-semibold text-white transition-colors duration-300" id="overview-label">Overview</span>
-        <label class="relative inline-flex items-center cursor-pointer select-none" style="height: 40px; width: 64px;">
-          <input type="checkbox" id="projects-toggle-switch" class="sr-only peer" aria-labelledby="overview-label detailed-label" />
-          <div class="absolute left-1 top-1 w-8 h-8 toggle-pill-btn transition-all duration-400 ease-out peer-checked:translate-x-6 flex items-center justify-center text-white text-lg">
+        <span
+          id="overview-label"
+          class="text-sm font-semibold transition-colors duration-300 select-none cursor-pointer px-2 py-1 rounded-lg"
+          tabindex="0"
+          role="button"
+          aria-pressed="true"
+        >
+          Overview
+        </span>
+        <label
+          class="relative inline-flex items-center cursor-pointer select-none"
+          style="height: 44px; width: 74px;"
+          aria-label="Toggle projects view"
+        >
+          <input
+            type="checkbox"
+            id="projects-toggle-switch"
+            class="sr-only peer"
+            aria-labelledby="overview-label detailed-label"
+          />
+          <div
+            id="toggle-pill"
+            class="absolute left-1 top-1 w-10 h-10 rounded-full bg-gradient-to-r from-accent to-blue-900 shadow-lg border border-accent/40 transition-all duration-400 ease-out flex items-center justify-center text-white text-xl hover:scale-105 active:scale-95"
+          >
             <i id="toggle-icon" class="fa-solid fa-th-large transition-all duration-300"></i>
           </div>
         </label>
-        <span class="text-sm font-semibold text-text-muted transition-colors duration-300" id="detailed-label">Detailed</span>
+        <span
+          id="detailed-label"
+          class="text-sm font-semibold transition-colors duration-300 select-none cursor-pointer px-2 py-1 rounded-lg text-text-muted"
+          tabindex="0"
+          role="button"
+          aria-pressed="false"
+        >
+          Detailed
+        </span>
       </div>
     </div>
 
@@ -173,7 +201,7 @@ label[for="projects-toggle-switch"] {
     const detailedLabel = document.getElementById('detailed-label');
     const overviewView = document.getElementById('overview-view');
     const detailedView = document.getElementById('detailed-view');
-    const projectsContent = document.getElementById('projects-content-outer');
+    const togglePill = document.getElementById('toggle-pill');
     let currentView = 'overview';
     let isAnimating = false;
 
@@ -183,18 +211,24 @@ label[for="projects-toggle-switch"] {
         overviewView.setAttribute('aria-hidden', 'false');
         detailedView.setAttribute('aria-hidden', 'true');
         toggleIcon.className = 'fa-solid fa-th-large transition-all duration-300';
-        overviewLabel.classList.add('text-white');
+        overviewLabel.classList.add('text-white', 'bg-accent/30', 'shadow');
         overviewLabel.classList.remove('text-text-muted');
+        overviewLabel.setAttribute('aria-pressed', 'true');
         detailedLabel.classList.add('text-text-muted');
-        detailedLabel.classList.remove('text-white');
+        detailedLabel.classList.remove('text-white', 'bg-accent/30', 'shadow');
+        detailedLabel.setAttribute('aria-pressed', 'false');
+        togglePill.style.transform = 'translateX(0)';
       } else {
         overviewView.setAttribute('aria-hidden', 'true');
         detailedView.setAttribute('aria-hidden', 'false');
         toggleIcon.className = 'fa-solid fa-file-lines transition-all duration-300';
-        overviewLabel.classList.remove('text-white');
+        overviewLabel.classList.remove('text-white', 'bg-accent/30', 'shadow');
         overviewLabel.classList.add('text-text-muted');
+        overviewLabel.setAttribute('aria-pressed', 'false');
         detailedLabel.classList.remove('text-text-muted');
-        detailedLabel.classList.add('text-white');
+        detailedLabel.classList.add('text-white', 'bg-accent/30', 'shadow');
+        detailedLabel.setAttribute('aria-pressed', 'true');
+        togglePill.style.transform = 'translateX(28px)';
       }
     }
 
@@ -203,12 +237,17 @@ label[for="projects-toggle-switch"] {
       isAnimating = true;
       currentView = view;
       setActiveView(view);
-      setTimeout(() => { isAnimating = false; }, 500);
+      setTimeout(() => { isAnimating = false; }, 400);
     }
 
     toggleSwitch.addEventListener('change', function() {
       switchView(this.checked ? 'detailed' : 'overview');
     });
+
+    overviewLabel.addEventListener('click', () => switchView('overview'));
+    detailedLabel.addEventListener('click', () => switchView('detailed'));
+    overviewLabel.addEventListener('keydown', (e) => { if (e.key === 'Enter') switchView('overview'); });
+    detailedLabel.addEventListener('keydown', (e) => { if (e.key === 'Enter') switchView('detailed'); });
 
     // Keyboard navigation (left/right arrows)
     document.addEventListener('keydown', function(e) {
@@ -222,6 +261,7 @@ label[for="projects-toggle-switch"] {
     });
 
     // Touch swipe navigation
+    const projectsContent = document.getElementById('projects-content-outer');
     let touchStartX = null;
     let touchEndX = null;
     projectsContent.addEventListener('touchstart', function(e) {
@@ -235,11 +275,9 @@ label[for="projects-toggle-switch"] {
       const dx = touchEndX - touchStartX;
       if (Math.abs(dx) > 50) {
         if (dx < 0 && currentView === 'overview') {
-          // Swipe left: overview -> detailed
           toggleSwitch.checked = true;
           switchView('detailed');
         } else if (dx > 0 && currentView === 'detailed') {
-          // Swipe right: detailed -> overview
           toggleSwitch.checked = false;
           switchView('overview');
         }

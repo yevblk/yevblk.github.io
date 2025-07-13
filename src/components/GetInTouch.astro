@@ -1,12 +1,12 @@
-<section id="contact" class="mb-12 reveal">
-  <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-2 text-text underline decoration-accent/30 underline-offset-4 drop-shadow font-serif">
+<section id="contact" class="mb-12 reveal w-full max-w-2xl mx-auto">
+  <h2 class="text-2xl sm:text-3xl md:text-4xl font-heading font-bold mb-4 text-text drop-shadow font-serif">
     {"Get in touch".split("").map((char, i) => (
       <span style={`opacity:0;display:inline-block;transform:translateY(16px);transition:opacity 0.5s ${0.2 + i*0.04}s,transform 0.5s ${0.2 + i*0.04}s;`} class="headline-letter">{char === " " ? "\u00A0" : char}</span>
     ))}
   </h2>
-  <p class="text-base sm:text-lg font-semibold drop-shadow-sm text-white/90 mb-6">I'd love to hear from you! Fill out the form and I'll get back to you soon.</p>
+  <p class="text-base sm:text-lg font-medium text-text-muted mb-8">I'd love to hear from you! Fill out the form and I'll get back to you soon.</p>
   <form id="contact-form"
-    class="flex flex-col gap-4 w-full max-w-xl mx-auto p-6 rounded-2xl shadow-2xl border border-accent/10 bg-gradient-to-br from-background via-background/90 to-accent/10 backdrop-blur-sm"
+    class="modern-project-card flex flex-col gap-5 w-full p-6 md:p-8 border border-accent/10 bg-gradient-to-br from-background via-background/95 to-accent/5 backdrop-blur-sm shadow-xl"
     autocomplete="off"
     action="javascript:void(0);"
   >
@@ -54,7 +54,7 @@
     <button 
       id="contact-submit"
       type="submit" 
-      class="stateful-button modern-send-btn mt-2 px-8 py-3 rounded-lg font-bold overflow-hidden relative"
+      class="stateful-button modern-send-btn mt-2 px-8 py-3 rounded-xl font-bold overflow-hidden relative transition-all duration-300"
       data-state="idle"
     >
       <span class="button-content idle-content flex items-center justify-center">
@@ -75,13 +75,14 @@
       </span>
     </button>
   </form>
-  
   <style>
+    .modern-project-card {
+      @apply w-full max-w-[700px] mx-auto bg-gradient-to-br from-background via-background/90 to-accent/10 backdrop-blur-sm border border-accent/10 shadow-xl hover:shadow-2xl rounded-2xl p-4 md:p-6 flex flex-col min-w-0 min-h-[220px] font-sans transition-all duration-300 relative overflow-hidden;
+    }
     .stateful-button {
       position: relative;
       min-height: 48px;
     }
-    
     .button-content {
       position: absolute;
       top: 0;
@@ -93,84 +94,66 @@
       justify-content: center;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
     .stateful-button[data-state="idle"] .idle-content {
       opacity: 1;
       transform: translateY(0);
     }
-    
     .stateful-button[data-state="loading"] .loading-content {
       opacity: 1;
       transform: translateY(0);
     }
-    
     .stateful-button[data-state="success"] {
-      background-color: #059669;
+      background: linear-gradient(90deg, #059669 0%, #047857 100%);
       border-color: #059669;
+      box-shadow: 0 4px 24px 0 rgba(5, 150, 105, 0.15);
     }
-    
     .stateful-button[data-state="success"] .success-content {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-    
     .stateful-button[data-state="error"] {
-      background-color: #dc2626;
+      background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
       border-color: #dc2626;
+      box-shadow: 0 4px 24px 0 rgba(220, 38, 38, 0.15);
     }
-    
     .stateful-button[data-state="error"] .error-content {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
-    
-    /* Exit animations */
     .stateful-button[data-state="loading"] .idle-content,
     .stateful-button[data-state="success"] .loading-content,
     .stateful-button[data-state="error"] .loading-content {
       opacity: 0;
       transform: translateY(-15px);
     }
-    
     .stateful-button[data-state="success"] .idle-content,
     .stateful-button[data-state="error"] .idle-content {
       opacity: 0;
       transform: translateY(-15px);
     }
-    
-    /* Initial state for success/error content */
     .success-content,
     .error-content {
       transform: translateY(15px) scale(0.8);
     }
-    
-    /* Disabled state */
     .stateful-button:disabled {
       cursor: not-allowed;
       opacity: 0.7;
     }
-    
-    /* Hover effects only for idle state */
     .stateful-button[data-state="idle"]:hover {
       background-color: #1d4ed8;
       transform: translateY(-1px);
       box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
     }
-    
-    /* Success hover */
     .stateful-button[data-state="success"]:hover {
-      background-color: #047857;
+      background: linear-gradient(90deg, #047857 0%, #065f46 100%);
       transform: translateY(-1px);
       box-shadow: 0 10px 25px rgba(5, 150, 105, 0.3);
     }
-    
-    /* Error hover */
     .stateful-button[data-state="error"]:hover {
-      background-color: #b91c1c;
+      background: linear-gradient(90deg, #b91c1c 0%, #991b1b 100%);
       transform: translateY(-1px);
       box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
     }
-
     .modern-send-btn {
       background: linear-gradient(90deg, #2563eb 0%, #1e40af 100%);
       box-shadow: 0 4px 24px 0 rgba(37,99,235,0.15);
@@ -197,17 +180,26 @@
     }
     .modern-send-btn:hover,
     .modern-send-btn:focus-visible {
-      transform: scale(1.045);
+      transform: translateY(-2px) scale(1.045);
       box-shadow: 0 6px 32px 0 rgba(37,99,235,0.22);
       border-color: #60a5fa;
       outline: none;
     }
-    .modern-send-btn i {
-      font-size: 1.1em;
-      z-index: 1;
-    }
+    .modern-send-btn i,
     .modern-send-btn span {
       z-index: 1;
+    }
+    @media (max-width: 480px) {
+      .modern-project-card {
+        padding: 1rem !important;
+        min-height: 0 !important;
+      }
+      .stateful-button {
+        font-size: 1rem !important;
+        padding: 0.6rem 0.7rem !important;
+        min-width: 44%;
+        text-align: center;
+      }
     }
   </style>
   
