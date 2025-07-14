@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Icons: Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Simple Icons CDN for SVG brand icons -->
     <style>
       body {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -111,18 +110,10 @@
         color: #64748b;
         margin-bottom: 4px;
       }
-      .cv-projects {
-        margin-bottom: 18px;
-      }
-      .cv-project-title {
-        font-weight: 600;
-        color: #2563eb;
-      }
       .cv-edu-title {
         font-weight: 600;
         color: #1a2233;
       }
-      /* Section divider style */
       .cv-divider {
         border: none;
         border-top: 1.5px solid #e5e7eb;
@@ -140,9 +131,7 @@
           margin: 24px 0;
         }
       }
-      /* Icon size adjustment for contacts */
-      .cv-header .cv-contacts i,
-      .cv-header .cv-contacts .si-icon {
+      .cv-header .cv-contacts i {
         font-size: 1.1em;
         min-width: 1.1em;
         height: 1.1em;
@@ -150,31 +139,13 @@
         display: inline-block;
         vertical-align: middle;
       }
-      /* Simple Icons SVG style for all SVGs used as icons */
-      .si-icon {
-        display: inline-block;
-        vertical-align: middle;
-        width: 1.1em;
-        height: 1.1em;
-        min-width: 1.1em;
-        min-height: 1.1em;
-        margin-right: 2px;
-      }
-      .cv-list .si-icon,
-      .cv-job-meta .si-icon {
-        width: 1em;
-        height: 1em;
-        min-width: 1em;
-        min-height: 1em;
-        margin-right: 2px;
-      }
     </style>
   </head>
   <body>
     <div class="cv-container">
       <header class="cv-header">
         <h1>Eugene Belikov</h1>
-        <div class="cv-title">Python / Web Developer & Automation Engineer</div>
+        <div class="cv-title">Python Developer | Web Developer | Automation Engineer</div>
         <span style="
           position: absolute;
           width: 1px;
@@ -186,7 +157,7 @@
           white-space: nowrap;
           border: 0;
         ">
-          Python Developer, JavaScript Developer, Automation Engineer, Web Developer, Flask, FastAPI, Node.js, React, API Developer, DevOps, Scripting, Data Processing
+          Python Developer, Web Developer, Automation Engineer, Software Engineer, Flask, FastAPI, Node.js, React, API Developer, DevOps, Scripting, Data Processing, JavaScript Developer
         </span>
         <div class="cv-contacts">
           <a href="mailto:yevblk@gmail.com" target="_blank" rel="noopener noreferrer">
@@ -216,79 +187,20 @@
         </div>
       </header>
       <section class="cv-section">
-        <h2>Summary</h2>
-        <p>Motivated Python, Web Developer, and Automation Engineer skilled in building web applications, automation tools, and APIs. Proficient in Flask, FastAPI, and modern JavaScript frameworks. Adept at solving complex problems, optimizing performance, and delivering clean, maintainable code. Seeking to contribute expertise to innovative projects.</p>
+        <h2>Professional Summary</h2>
+        <p>
+          Python Developer and Web Developer with experience in automation engineering. Skilled in building web applications, automation tools, and APIs using Flask, FastAPI, and modern JavaScript frameworks. Demonstrated ability to deliver maintainable code and optimize performance. Degree in Computer Science (BSc, 2021–2025). 
+        </p>
       </section>
       <hr class="cv-divider" />
       <section class="cv-section">
         <h2>Skills</h2>
-        <div class="cv-skills">
-          <div class="cv-skill-group">
-            <strong>Languages:</strong>
-            <ul class="cv-list">
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/javascript" alt="JavaScript" title="JavaScript" />
-                JavaScript (ES6+)
-              </li>
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/typescript" alt="TypeScript" title="TypeScript" />
-                TypeScript
-              </li>
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/python" alt="Python" title="Python" />
-                Python (OOP, async)
-              </li>
-              <li>
-                <i class="fa-solid fa-database"></i> SQL, NoSQL
-              </li>
-            </ul>
-          </div>
-          <div class="cv-skill-group">
-            <strong>Frameworks & Libraries:</strong>
-            <ul class="cv-list">
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/flask" alt="Flask" title="Flask" />
-                Flask,
-                <img class="si-icon" src="https://cdn.simpleicons.org/fastapi" alt="FastAPI" title="FastAPI" />
-                FastAPI
-              </li>
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/react" alt="React" title="React" />
-                React,
-                <img class="si-icon" src="https://cdn.simpleicons.org/astro" alt="Astro" title="Astro" />
-                Astro
-              </li>
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/tailwindcss" alt="Tailwind CSS" title="Tailwind CSS" />
-                Tailwind CSS
-              </li>
-            </ul>
-          </div>
-          <div class="cv-skill-group">
-            <strong>Tools & DevOps:</strong>
-            <ul class="cv-list">
-              <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/git" alt="Git" title="Git" />
-                Git,
-                <img class="si-icon" src="https://cdn.simpleicons.org/linux/000000" alt="Linux" title="Linux" />
-                Linux
-              </li>
-              <li>
-                <i class="fa-solid fa-gears"></i> CI/CD,
-                <img class="si-icon" src="https://cdn.simpleicons.org/githubactions" alt="GitHub Actions" title="GitHub Actions" />
-                GitHub Actions
-              </li>
-            </ul>
-          </div>
-          <div class="cv-skill-group">
-            <strong>Soft Skills:</strong>
-            <ul class="cv-list">
-              <li><i class="fa-solid fa-lightbulb"></i> Problem-solving & Reliability</li>
-              <li><i class="fa-solid fa-users"></i> Teamwork & Communication</li>
-              <li><i class="fa-solid fa-arrows-rotate"></i> Adaptability</li>
-            </ul>
-          </div>
-        </div>
+        <ul class="cv-list">
+          <li><strong>Programming Languages:</strong> Python (OOP, async), JavaScript (ES6+), TypeScript, SQL, NoSQL</li>
+          <li><strong>Frameworks & Libraries:</strong> Flask, FastAPI, React, Astro, Tailwind CSS</li>
+          <li><strong>DevOps & Tools:</strong> Git, Linux, CI/CD, GitHub Actions</li>
+          <li><strong>Soft Skills:</strong> Problem-solving, Reliability, Teamwork, Communication, Adaptability</li>
+        </ul>
       </section>
       <hr class="cv-divider" />
       <section class="cv-section">
@@ -300,9 +212,9 @@
           </div>
           <ul class="cv-list">
             <li>Developed a web tool to convert citations between APA, IEEE, and DSTU 8302:2015 formats using Python and JavaScript.</li>
-            <li>Implemented robust offline support and modular architecture for maintainability and scalability.</li>
+            <li>Implemented offline support and modular architecture, improving maintainability and scalability.</li>
             <li>
-              Open source: 
+              <strong>Open source:</strong>
               <a href="https://github.com/yevblk/citation-style-converter" target="_blank" rel="noopener noreferrer">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
@@ -337,17 +249,14 @@
         <div class="cv-job-meta">Tavria State Agrotechnological University | <a href="https://www.tsatu.edu.ua/" target="_blank" rel="noopener noreferrer">tsatu.edu.ua</a> | 2021–2025</div>
         <ul class="cv-list">
           <li>
-            <span class="cv-label"><strong>Relevant coursework:</strong></span>
-            <span class="cv-coursework">
-              Software Development &bull; Web Technologies &bull; Cross-Platform Programming &bull; System and Business Analysis &bull; Information Systems Design &bull; Project Management in IT &bull; Data Analysis & Automation &bull; Digital Product Design
-            </span>
+            <strong>Relevant coursework:</strong> Software Development, Web Technologies, Cross-Platform Programming, System and Business Analysis, Information Systems Design, Project Management in IT, Data Analysis & Automation, Digital Product Design
           </li>
         </ul>
         <div class="cv-edu-title"><i class="fa-solid fa-language"></i> Languages</div>
         <ul class="cv-list">
-          <li><i class="fa-solid fa-language"></i> English: Intermediate (B1)</li>
-          <li><i class="fa-solid fa-language"></i> Ukrainian: Native (bilingual)</li>
-          <li><i class="fa-solid fa-language"></i> Russian: Native (bilingual)</li>
+          <li>English: Intermediate (B1)</li>
+          <li>Ukrainian: Native</li>
+          <li>Russian: Native</li>
         </ul>
       </section>
     </div>
