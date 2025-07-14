@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV – Eugene Belikov</title>
+    <title>Resume – Eugene Belikov</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -69,6 +69,10 @@
       .cv-header .cv-contacts a:focus {
         color: #2563eb;
         text-decoration: underline;
+      }
+      .cv-header .cv-contacts .cv-phone {
+        font-weight: 500;
+        letter-spacing: 0.01em;
       }
       .cv-section {
         margin-bottom: 32px;
@@ -175,22 +179,31 @@
           <a href="mailto:yevblk@gmail.com" target="_blank" rel="noopener noreferrer">
             <i class="fa-solid fa-envelope"></i> yevblk@gmail.com
           </a>
+          <!--
+          <a href="tel:+" class="cv-phone">
+            <i class="fa-solid fa-phone"></i> +
+          </a>
+          -->
           <a href="https://yevblk.github.io/" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-globe"></i> Portfolio
+            <i class="fa-solid fa-globe"></i> yevblk.github.io
           </a>
           <a href="https://github.com/yevblk" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-github"></i> GitHub
           </a>
-          <!-- <a href="https://linkedin.com/in/yevblk" target="_blank" rel="noopener noreferrer">
+          <!--
+          <a href="https://linkedin.com/in/yevblk" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-linkedin"></i> LinkedIn
-          </a> -->
-          <a href="https://www.openstreetmap.org/relation/71980" target="_blank" rel="noopener noreferrer">
-            <i class="fa-solid fa-location-dot"></i> Zaporizhzhia, Ukraine
           </a>
+          -->
+        </div>
+        <div style="font-size:0.95em;color:#64748b;margin-top:8px;">
+          <strong>
+            <i class="fa-solid fa-location-dot" style="margin-right:4px;"></i>Address:
+          </strong> Zaporizhzhia, Ukraine
         </div>
       </header>
       <section class="cv-section">
-        <h2>Professional Summary</h2>
+        <h2>Summary</h2>
         <p>Motivated Python, Web Developer, and Automation Engineer skilled in building web applications, automation tools, and APIs. Proficient in Flask, FastAPI, and modern JavaScript frameworks. Adept at solving complex problems, optimizing performance, and delivering clean, maintainable code. Seeking to contribute expertise to innovative projects.</p>
       </section>
       <hr class="cv-divider" />
@@ -201,10 +214,6 @@
             <strong>Languages:</strong>
             <ul class="cv-list">
               <li>
-                <img class="si-icon" src="https://cdn.simpleicons.org/python" alt="Python" title="Python" />
-                Python (OOP, async)
-              </li>
-              <li>
                 <img class="si-icon" src="https://cdn.simpleicons.org/javascript" alt="JavaScript" title="JavaScript" />
                 JavaScript (ES6+)
               </li>
@@ -213,12 +222,16 @@
                 TypeScript
               </li>
               <li>
+                <img class="si-icon" src="https://cdn.simpleicons.org/python" alt="Python" title="Python" />
+                Python (OOP, async)
+              </li>
+              <li>
                 <i class="fa-solid fa-database"></i> SQL, NoSQL
               </li>
             </ul>
           </div>
           <div class="cv-skill-group">
-            <strong>Frameworks:</strong>
+            <strong>Frameworks & Libraries:</strong>
             <ul class="cv-list">
               <li>
                 <img class="si-icon" src="https://cdn.simpleicons.org/flask" alt="Flask" title="Flask" />
@@ -257,7 +270,7 @@
           <div class="cv-skill-group">
             <strong>Soft Skills:</strong>
             <ul class="cv-list">
-              <li><i class="fa-solid fa-lightbulb"></i> Problem-solving</li>
+              <li><i class="fa-solid fa-lightbulb"></i> Problem-solving & Reliability</li>
               <li><i class="fa-solid fa-users"></i> Teamwork & Communication</li>
               <li><i class="fa-solid fa-arrows-rotate"></i> Adaptability</li>
             </ul>
@@ -308,9 +321,9 @@
       </section>
       <hr class="cv-divider" />
       <section class="cv-section">
-        <h2>Education & Certifications</h2>
-        <div class="cv-edu-title"><i class="fa-solid fa-graduation-cap"></i> BSc of Computer Science</div>
-        <div class="cv-job-meta">Tavria State Agrotechnological University | 2021–2025</div>
+        <h2>Education</h2>
+        <div class="cv-edu-title"><i class="fa-solid fa-graduation-cap"></i> BSc in Computer Science</div>
+        <div class="cv-job-meta">Tavria State Agrotechnological University | <a href="https://www.tsatu.edu.ua/" target="_blank" rel="noopener noreferrer">tsatu.edu.ua</a> | 2021–2025</div>
         <ul class="cv-list">
           <li>
             <span class="cv-label"><strong>Relevant coursework:</strong></span>
@@ -319,13 +332,6 @@
             </span>
           </li>
         </ul>
-        <!--
-        <div class="cv-edu-title">Certifications</div>
-        <ul class="cv-list">
-          <li></li>
-          <li></li>
-        </ul>
-        -->
         <div class="cv-edu-title"><i class="fa-solid fa-language"></i> Languages</div>
         <ul class="cv-list">
           <li><i class="fa-solid fa-language"></i> English: Intermediate (B1)</li>
@@ -335,4 +341,4 @@
       </section>
     </div>
   </body>
-</html> 
+</html>
